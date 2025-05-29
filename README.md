@@ -30,17 +30,25 @@
 [VSCode](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim)
 
 ```bash
-code --profile-temp
+code --profile-temp .
 ```
 
 [JetBrains](https://plugins.jetbrains.com/plugin/164-ideavim)
+
+```bash
+# not sure
+```
 
 ### Use VIM
 ```bash
 echo "set number" > ~/.vimrc
 ```
 
-**Let's get moving!**
+```bash
+vim .
+```
+
+🚀 **Let's get moving!**
 
 ---
 
