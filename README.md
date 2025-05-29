@@ -96,7 +96,7 @@ echo "set number" > ~/.vimrc
 - `h`, `j`, `k`, `l` are the home row keys. They are easy to reach and allow for fast navigation without moving your hands away from the home row.
 - We will see that `a`, `s`, `d`, `f`, and many other keys are used for other commands.
 
-### Left and right motions
+### ↔️ Left and right motions
 
 #### Small jumps
 - `h` - move left
@@ -132,7 +132,7 @@ echo "set number" > ~/.vimrc
 - `;` - repeat the last `f`, `F`, `t`, or `T` command
 - `,` - repeat the last `f`, `F`, `t`, or `T` command in the opposite direction
 
-### Up and down motions
+### ↕️ Up and down motions
 
 #### Small jumps
 - `j` - move down one line
@@ -148,6 +148,8 @@ echo "set number" > ~/.vimrc
 - `M` - move to the middle of the file
 - `H` - move to the top of the screen
 - `L` - move to the bottom of the screen
+- `*` - search for the word under the cursor and move to the next occurrence
+- `#` - search for the word under the cursor and move to the previous occurrence 
 
 #### Tricky
 - `zt` - move the current line to the top of the screen
