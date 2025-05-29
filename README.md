@@ -1,62 +1,108 @@
-## What are Vim motions?
+# Vim Motions
 
-### What they are not!
+## 🏃‍➡️ What are Vim motions?
+
+### ❌ What they are not!
 - They are not "VIM"
+- VIM is an IDE
+- Don't need to know how to setup, configure or use Vim to use Vim motions.
+- Don't have to know where a file explorer is or how to open a file.
 
-## What are they?
+### 🤔 What are they?
 - They are a set of commands that allow you to navigate and manipulate text in a file.
-- They are not limited to Vim, but are also available in other editors like VSCode or pretty much any editor that supports Vim keybindings.
-- They can be applied to any text object, including lines, words, paragraphs, and more.
+- They are not limited to Vim but are also available in other editors like VSCode or any editor that supports Vim keybindings.
+- They can be applied to any text object, including lines, words, paragraphs, objects like `{}` and `[]` and more.
 
-## Normal mode vs Insert mode
-- Normal mode is the default mode in when using Vim Motions. In this mode, you can use motions to navigate and manipulate text.
-- Insert mode is the mode where you can type text. You can enter insert mode by pressing `i` in normal mode. You can return to normal mode by pressing `Esc`.
-- There are other modes like visual mode, but we will not cover them here.
+## 🤷‍♂️ So, Why Vim motions?
+- Vim motions are a powerful way to navigate and manipulate text in a file.
+- Less time using the mouse and more time using the keyboard.
+- Vim leans heavily on **mnemonics** for motion and action commands, where single-character keys often represent the action they perform or the object they act upon. For example:
+- `w` for "word," `b` for "back a word," and `f` for "find" (or "forward to character").
+- `daw` for "delete a word" and `ci(` for "change inside parentheses."
 
-## How do I go between modes?
-- `i` - enter insert mode 
-- `esc` - return to normal mode
-- there are other ways to enter insert mode, but we will not cover them here.
-- there are other ways to enter normal mode, but we will not cover them here.
-- Visual mode is a mode where you can select text. You can enter visual mode by pressing `v` in normal mode. 
+### Resources
+[README](/resources.md)
 
-## Why use Vim motions?
+## ⚙️ Set up
 
-Vim uses mnemonic motions—single-character commands where the key often stands for the action it performs. For example:
+### Use VIM keybindings in IDEs
 
-- `w` for “word”
-- `f` for “find” (or “forward to character”)
-- `b` for “back a word”
+[VSCode](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim)
 
-The keystrokes are intuitive once you know the mnemonic behind them, letting you navigate text semantically.
+```bash
+code --profile-temp
+```
 
-## I'm Stuck!
+[JetBrains](https://plugins.jetbrains.com/plugin/164-ideavim)
+
+### Use VIM
+```bash
+echo "set number" > ~/.vimrc
+```
+
+**Let's get moving!**
+
+---
+
+## ␛ Modes
+
+### Normal mode vs Insert mode
+- Normal mode is the default mode when using Vim motions. 
+  - In this mode, you can use motions to navigate and manipulate text.
+  - Think of this mode as a layer on top or your keyboard where every key is a command.
+
+- Insert mode is the mode where you can edit text. 
+  - You can enter insert mode by pressing `i` in normal mode. You can return to normal mode by pressing `Esc`.
+
+- Visual mode is a mode where you can select text.
+  - You can enter visual mode by pressing `v` in normal mode. You can return to normal mode by pressing `Esc`.
+
+
+```json
+"vim.statusBarColorControl": false
+```
+
+
+### How do I go between modes?
+- `i` - enter [i]nsert mode (insert before the cursor)
+- `a` - enter [a]ppend mode (insert after the cursor)
+- `Esc` - return to normal mode
+
+#### Other modes
+- `v` - enter [v]isual mode (select text)
+
+## 🆘 I'm Stuck!
+
+**Most of the time `<Esc>` will get you out of a mode and back to normal mode**
 
 ### Macros (recording @q)
 - Macros are a way to record a sequence of commands and play them back later.
-- `qq` - Macros :|
-- `q` - record a macro
-- `@q` - play the macro
+- `qq` - start recording a macro
 - `q` - stop recording the macro
 
-## H, J, K, L - no so nemonic
+### VIM Users
+- `:q` - quit Vim
+- `:q!` - quit Vim without saving - force quit
+
+## 🏃‍♂️ Let's get moving!
+
+### H, J, K, L - not so mnemonic
 - `h` - move left
 - `j` - move down
 - `k` - move up
 - `l` - move right
 
-### Why?
+#### Why?
 - `h`, `j`, `k`, `l` are the home row keys. They are easy to reach and allow for fast navigation without moving your hands away from the home row.
-- well see that `a`, `s`, `d`, `f` and many other keys are used for other commands.
+- We will see that `a`, `s`, `d`, `f`, and many other keys are used for other commands.
 
+### Left and right motions
 
-## Left and right motions
-
-### Small jumps
+#### Small jumps
 - `h` - move left
 - `l` - move right
 
-### Medium jumps
+#### Medium jumps
 - `w` - move to the beginning of the next word
 - `W` - move to the beginning of the next WORD
 - `e` - move to the end of the current word
@@ -64,13 +110,19 @@ The keystrokes are intuitive once you know the mnemonic behind them, letting you
 - `b` - move to the beginning of the previous word
 - `B` - move to the beginning of the previous WORD
 
-### Big jumps
+---
+#### 🧙‍♂️ Side Quest - `>>` - Indenting
+- `>>` - indent the current line
+- `<<` - unindent the current line
+---
 
+#### Big jumps
+
+- `$` - move to the end of the line
 - `0` - move to the beginning of the line
 - `^` - move to the first non-blank character of the line
-- `$` - move to the end of the line
 
-### `f` and `F` - find forward and backward
+#### `f` and `F` - find forward and backward
 - `f<char>` - move to the next occurrence of `<char>` in the line
 - `F<char>` - move to the previous occurrence of `<char>` in the line
 - `t<char>` - move to the character before the next occurrence of `<char>` in the line
@@ -80,21 +132,17 @@ The keystrokes are intuitive once you know the mnemonic behind them, letting you
 - `;` - repeat the last `f`, `F`, `t`, or `T` command
 - `,` - repeat the last `f`, `F`, `t`, or `T` command in the opposite direction
 
-## Side Quest - Counts
-- You can prefix any motion with a number to repeat it that many times.
-- For example, `3w` will move the cursor three words forward.
+### Up and down motions
 
-## Up and down motions
-
-### Small jumps
+#### Small jumps
 - `j` - move down one line
 - `k` - move up one line
 
-### Medium jumps
+#### Medium jumps
 - `Ctrl + d` - move down half a screen
 - `Ctrl + u` - move up half a screen
 
-### Big jumps
+#### Big jumps
 - `gg` - move to the top of the file
 - `G` - move to the bottom of the file
 - `M` - move to the middle of the file
@@ -107,121 +155,24 @@ The keystrokes are intuitive once you know the mnemonic behind them, letting you
 - `zb` - move the current line to the bottom of the screen
 - `<count>%` - move to the line number that is a percentage of the file. 
 
-#### Side Quest - `:` - command mode
+---
+#### 🧙‍♂️ Side Quest - `:` - command mode
 - `:` - enter command mode
 - `<enter>` - execute the command
-
-### Line numbers
+---
+#### Line numbers
 - `:n` - move to line number `n`
 
-## Jump motions
+### Other motions
+
+#### Jump motions
 - `Ctrl + o` - jump to the previous location in the jump list
 - `Ctrl + i` - jump to the next location in the jump list
 
-## Operator motions
-- `d` - delete
-- `c` - change
-- `y` - yank (copy)
-- `v` - visual mode (select text)
-
-## Operators with motions
-- `{operator} {motion}` - apply an operator to a motion
-- `dw` - delete the next word
-- `cw` - change the next word
-- `yw` - yank the next word
-- `vw` - select the next word
-
-- Non letter motions (objects)
-- `(` - move to the beginning of the current sentence
-- `)` - move to the end of the current sentence
-- `{` - move to the beginning of the current paragraph
-- `}` - move to the end of the current paragraph
-- `[` - move to the beginning of the current block
-- `]` - move to the end of the current block
+#### Non letter motions (objects)
 - `%` - move to the matching parenthesis, bracket, or brace
 
-## In and Around (Nonletter motions)
-- `{operator} {modifier} {object}`
-
-### Inside
-- `di` - delete inside
-- `ci` - change inside
-- `yi` - yank inside
-- `vi` - select inside
-
-### Around
-- `da` - delete around
-- `ca` - change around
-- `ya` - yank around
-- `va` - select around
-
-## Text objects
-- `iw` - inner word
-- `aw` - a word
-- `is` - inner sentence
-- `as` - a sentence
-- `ip` - inner paragraph
-- `ap` - a paragraph
-- `i(` - inner parentheses
-- `a(` - a parentheses
-
-## Putting it all together
-- `{operator} {modifier} {text object}`
-- `daw` - delete a word
-- `dap` - delete a paragraph - `dp` - also works
-- `ci"` - change inside quotes
-- `yi(` - yank inside parentheses
-
-## `d{a|i}w` vs `dw`
-- `daw` - delete a word and the space after it
-- `dw` - delete a word but not the space after it
-
-## Those are the core motions
-- There are many more motions, but these are the most common ones.
-- You can combine them in many ways to create powerful commands.
-
-## So what about VIM?
-- Vim is a text editor that uses these motions as its core navigation and editing commands.
-
-## Moving around with search
-
-### Main search commands
-- `/` - search forward
-- `?` - search backward
-- `*` - search for the word under the cursor
-- `#` - search for the word under the cursor in the opposite direction
-
-### Repeat search
-- `n` - repeat the last search in the same direction
-- `N` - repeat the last search in the opposite direction
-
-## Search and replace
-- `:s/<search>/<replace>/g` - search and replace in the current line
-- `:%s/<search>/<replace>/g` - search and replace in the entire file
-- vis
-
-#### Side quest - regex
-- vim supports regex in search and replace commands.
-
-### Confirmation
-- `:%s/<search>/<replace>/gc` - search and replace in the entire file with confirmation
-
-## Visual mode
-- `v` - enter visual mode
-- `V` - enter visual line mode
-- `Ctrl + v` - enter visual block mode
-- `o` - move the cursor to the other end of the selection
-
-### Yanking and pasting
-- `y` - yank (copy) the selected text
-- `d` - delete the selected text
-- `p` - paste the yanked or deleted text after the cursor
-- `P` - paste the yanked or deleted text before the cursor
-
-### `'<,'>` - visual range when using commands
-- `'<,'>s/<search>/<replace>/g` - search and replace in the selected text
-
-## Start editing
+## ✍️ Let's Edit some text!
 
 ### Insert mode
 - `i` - insert text before the cursor
@@ -235,6 +186,12 @@ The keystrokes are intuitive once you know the mnemonic behind them, letting you
 ### Undo and redo
 - `u` - undo the last change
 - `Ctrl + r` - redo the last undone change
+
+### Operators
+- `d` - delete
+- `c` - change
+- `y` - yank (copy)
+- `v` - visual mode (select text)
 
 ### Delete
 - `x` - delete the character under the cursor
@@ -250,9 +207,125 @@ The keystrokes are intuitive once you know the mnemonic behind them, letting you
 
 ** Delete and yank both store the text in a register, so you can paste it later.**
 
-## Editing multiple lines
+### Operators with motions and objects
+- `{operator} {motion|object}` - apply an operator to a motion
 
-### Visual block mode
+### Operators with motions
+- `dj` - delete down
+- `dk` - delete up
+- `dw` - delete the next word
+- `cw` - change the next word
+- `yw` - yank the next word
+- `vw` - select the next word
+
+
+## 🔄 In and Around
+- `{operator} {modifier} {object}`
+- Example: `di"` - delete inside quotes
+
+### Inside
+- `di` - delete inside
+- `ci` - change inside
+- `yi` - yank inside
+- `vi` - select inside
+
+### Around
+- `da` - delete around
+- `ca` - change around
+- `ya` - yank around
+- `va` - select around
+
+### Text objects
+- `iw` - inner word
+- `aw` - a word
+- `is` - inner sentence
+- `as` - a sentence
+- `ip` - inner paragraph
+- `ap` - a paragraph
+- `i(` - inner parentheses
+- `a(` - a parentheses
+
+### Putting it all together
+- `{operator} {modifier} {text object}`
+- `daw` - delete a word
+- `dap` - delete a paragraph - `dp` - also works
+- `ci"` - change inside quotes
+- `yi(` - yank inside parentheses
+
+### `d{a|i}w` vs `dw`
+- `daw` - delete a word and the space after it
+- `dw` - delete a word but not the space after it
+
+---
+#### 🧙‍♂️ Side Quest - Counts
+- You can prefix any motion with a number to repeat it that many times.
+- For example, `3w` will move the cursor three words forward.
+- `10j` will move the cursor ten lines down.
+- Relative line numbers are a great way to see how far you are from the current line.
+```json
+// VSCode settings
+{
+  "editor.lineNumbers": "relative",
+}
+```
+
+```bash
+echo "set relativenumber" >> ~/.vimrc
+```
+---
+
+## Repeating actions (:flex: Beast Mode)
+- `.` - repeat the last action
+
+## Those are the core motions
+- There are many more motions, but these are the most common ones.
+- You can combine them in many ways to create powerful commands.
+
+## So what about VIM?
+- Vim is a text editor that uses these motions as its core navigation and editing commands.
+
+### 🔍 Moving around with search
+
+#### Main search commands
+- `/` - search forward
+- `?` - search backward
+- `*` - search for the word under the cursor
+- `#` - search for the word under the cursor in the opposite direction
+
+#### Repeat search
+- `n` - repeat the last search in the same direction
+- `N` - repeat the last search in the opposite direction
+
+### Search and replace
+- `:s/<search>/<replace>/g` - search and replace in the current line
+- `:%s/<search>/<replace>/g` - search and replace in the entire file
+
+---
+#### 🧙‍♂️ Side Quest - regex
+- vim supports regex in search and replace commands.
+---
+#### Confirmation
+- `:%s/<search>/<replace>/gc` - search and replace in the entire file with confirmation
+
+### Visual mode
+- `v` - enter visual mode
+- `V` - enter visual line mode
+- `Ctrl + v` - enter visual block mode
+- `o` - move the cursor to the other end of the selection
+
+#### Yanking and pasting
+- `y` - yank (copy) the selected text
+- `d` - delete the selected text
+- `p` - paste the yanked or deleted text after the cursor
+- `P` - paste the yanked or deleted text before the cursor
+
+#### `'<,'>` - visual range when using commands
+- `'<,'>s/<search>/<replace>/g` - search and replace in the selected text
+
+
+### Editing multiple lines
+
+#### Visual block mode
 - `Ctrl + v` - enter visual block mode
 - `I` - insert text at the beginning of the selected block
 - `A` - insert text at the end of the selected block
@@ -263,26 +336,8 @@ The keystrokes are intuitive once you know the mnemonic behind them, letting you
 - `c` - change the selected block
 - `x` - delete the selected block
 
-## Registers
+## 📋 Registers
 - registers are a way to store yanked or deleted text for later use.
 - the default register is the unnamed register, which stores the last yanked or deleted text. `"`.
 - To yank or delete text to a specific register, use the `"` key followed by the register name.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Links
-- https://vimdoc.sourceforge.net/htmldoc/motion.html
-- https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/moving-blazingly-fast-with-the-core-vim-motions/
